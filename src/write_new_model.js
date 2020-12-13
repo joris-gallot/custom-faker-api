@@ -12,7 +12,7 @@ module.exports = (model, attributes) => {
       writeApp()
     })
     .catch((error) => {
-      console.error('ERROR: errors creating model routes')
+      console.error(`ERROR: error when creating ${model} routes`)
       console.error(error)
       process.exit(1)
     })
