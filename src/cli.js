@@ -1,3 +1,4 @@
+const WriteNewModel = require('./write_new_model')
 const yargs = require('yargs')
 const TYPES = [
   'STRING',
@@ -10,14 +11,13 @@ const TYPES = [
   'JSON',
   'BLOB',
 ]
-
 yargs
   .command(
     'model:generate <model> [attributes..]',
     'Generate model routes',
     () => {},
     (argv) => {
-      const model = argv.model.to
+      const model = argv.model
       let attributes = {}
 
       for (const atribute of argv.attributes) {
@@ -40,7 +40,7 @@ yargs
           yargs.exit(1)
         }
       }
-      console.log(model, attributes)
+      WriteNewModel(model, attributes)
     }
   )
   .help().argv

@@ -1,0 +1,7 @@
+const router = require('express').Router()
+
+const {{model}}_controller = require('../controllers/{{model}}_controller')
+
+router.get('/{{model}}s', {{model}}_controller.get)
+
+module.exports = router
