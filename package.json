@@ -1,0 +1,23 @@
+{
+  "name": "custom-faker-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joris-gallot/custom-faker-api.git"
+  },
+  "author": "Joris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joris-gallot/custom-faker-api/issues"
+  },
+  "homepage": "https://github.com/joris-gallot/custom-faker-api#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "yargs": "^16.2.0"
+  }
+}
