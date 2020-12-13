@@ -1,7 +1,6 @@
 const fs = require('fs')
 
 module.exports = (model, attributes) => {
-  console.log(model, attributes)
   writeModel(model, attributes)
   writeController(model)
   writeRoute(model)
@@ -17,8 +16,8 @@ function writeModel(model, attributes) {
     let contructAttributes = ''
     for (const key in attributes) {
       if (attributes.hasOwnProperty(key)) {
-        const type = attributes[key]
-        contructAttributes += `this.${key}=faker.name.firstName()\n\t\t` // TODO: change faker methods depend on type
+        const fakerFuc = attributes[key]
+        contructAttributes += `this.${key}=faker.${fakerFuc}()\n`
       }
     }
 

@@ -5,3 +5,8 @@ npm-debug.log*
 
 # node_modules
 node_modules
+
+# generate files
+src/server/controllers/*.js
+src/server/models/*.js
+src/server/routes/*.js

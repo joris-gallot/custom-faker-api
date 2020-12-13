@@ -8,6 +8,4 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.use(require('./routes/foo_routes'))
-
 app.listen(3000)
