@@ -8,3 +8,4 @@ node_modules
 
 # generate files
 src/server/**/*.js
+!src/server/routes/index.js

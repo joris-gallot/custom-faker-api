@@ -9,7 +9,7 @@ module.exports = (model, attributes) => {
     )
   })
     .then(() => {
-      writeApp()
+      writeRoutesIndex()
     })
     .catch((error) => {
       console.error(`ERROR: error when creating ${model} routes`)
@@ -91,30 +91,23 @@ function writeRoute(model) {
   })
 }
 
-function writeApp() {
-  fs.readFile(`${__dirname}/server/base.app`, (err, data) => {
-    if (err) {
-      throw err
-    }
-
-    let routes = ''
-    fs.readdirSync(`${__dirname}/server/models`)
-      .filter((file) => {
-        return file !== 'base.model'
-      })
-      .forEach((file) => {
-        routes += `app.use(require('./routes/${file.replace(
-          '.js',
-          ''
-        )}_routes'))\n`
-      })
-
-    const content = data.toString().replace(/{{routes}}/g, routes)
-
-    fs.writeFile(`${__dirname}/server/app.js`, content, (err) => {
-      if (err) throw err
-
-      console.log('The app file was succesfully saved!')
+function writeRoutesIndex() {
+  let body = ''
+  fs.readdirSync(`${__dirname}/server/models`)
+    .filter((file) => {
+      return file !== 'base.model'
     })
+    .forEach((file) => {
+      body += `app.use(require('./${file.replace('.js', '')}_routes'))\n`
+    })
+
+  const start = 'module.exports = (app) => {\n\t'
+  const end = '}'
+  const content = start + body + end
+
+  fs.writeFile(`${__dirname}/server/routes/index.js`, content, (err) => {
+    if (err) throw err
+
+    console.log('The app file was succesfully saved!')
   })
 }
