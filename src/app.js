@@ -1,19 +1,21 @@
 const express = require('express')
 const app = express()
-
+const { getModels } = require('./utils')
+const configWatchers = require('./watchers')
 let router = null
 try {
-  router = require('./routes')
+  router = require('./server/routes')
 } catch (error) {
-  console.log('no routes find')
+  console.warn('no routes find')
 }
 
+configWatchers()
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
   res.render('index', {
-    name: 'Jean',
+    models: getModels(),
   })
 })
 
