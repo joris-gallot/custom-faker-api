@@ -40,7 +40,7 @@ async function writeModelFiles() {
 
       const content = data
         .toString()
-        .replace(/{{model}}/g, model.name)
+        .replace(/{{model}}/g, name)
         .replace(/{{attributes}}/g, constructAttributes)
 
       fs.writeFile(`${__dirname}/server/models/${name}.js`, content, (err) => {
@@ -59,7 +59,7 @@ async function writeControllerFiles() {
 
     for (const model of config) {
       const name = model.name.toLocaleLowerCase()
-      const content = data.toString().replace(/{{model}}/g, model.name)
+      const content = data.toString().replace(/{{model}}/g, name)
 
       fs.writeFile(
         `${__dirname}/server/controllers/${name}_controller.js`,
@@ -81,7 +81,7 @@ async function writeRouteFiles() {
 
     for (const model of config) {
       const name = model.name.toLocaleLowerCase()
-      const content = data.toString().replace(/{{model}}/g, model.name)
+      const content = data.toString().replace(/{{model}}/g, name)
 
       fs.writeFile(
         `${__dirname}/server/routes/${name}_routes.js`,
@@ -100,7 +100,7 @@ function writeRoutesIndexFile() {
   let body = ''
   for (const model of config) {
     const name = model.name.toLocaleLowerCase()
-    body += `app.use(require('./${name}_routes'))\n`
+    body += `app.use(require('./${name}_routes'))\n\t`
   }
 
   const start = 'module.exports = (app) => {\n\t'

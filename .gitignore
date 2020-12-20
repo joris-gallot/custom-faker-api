@@ -8,3 +8,6 @@ node_modules
 
 # generate files
 src/server/**/*.js
+src/config.json
+src/assets/styles/*.css
+src/assets/styles/*.css.map

@@ -1,1 +1,25 @@
-<% models.forEach((model) => { %> <%= model %> <% }); %>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/styles/index.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>API Routes</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Routes</h1>
+      <div class="routes">
+        <% models.forEach((model) => { %>
+        <div class="route">
+          <span class="title"><%= model.name %></span>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+</html>

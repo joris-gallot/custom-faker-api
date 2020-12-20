@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-const { getModels } = require('./utils')
-const configWatchers = require('./watchers')
+const configWatchers = require('./watch_config')
+const config = require('./config.json')
+
 let router = null
 try {
   router = require('./server/routes')
@@ -10,12 +11,14 @@ try {
 }
 
 configWatchers()
+app.use(express.static(__dirname))
+
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
   res.render('index', {
-    models: getModels(),
+    models: config,
   })
 })
 

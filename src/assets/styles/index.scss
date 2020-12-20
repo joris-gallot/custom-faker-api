@@ -1,0 +1,54 @@
+$primary-color: #2bced6;
+$primary-color-darker: #00adb5;
+$light-gray-color: #eeeeee;
+$secondary-color: #222831;
+$secondary-color-lighter: #393e46;
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: white;
+  background-color: $secondary-color;
+}
+
+.container {
+  padding: 1rem 0;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+// @media (min-width: 640px) {} sm
+// @media (min-width: 768px) {} md
+// @media (min-width: 1024px) {} lg
+// @media (min-width: 1280px) {} xl
+// @media (min-width: 1536px) {} 2xl
+
+.routes {
+  .route {
+    border-radius: 0.3rem;
+    padding: 0.7rem 0.9rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: $secondary-color;
+    background-color: $primary-color;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+
+    .title {
+      font-size: 1.3rem;
+    }
+  }
+
+  .route:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+}

@@ -1,1 +1,1 @@
-[{"name":"Test","attributes":[{"name":"name","faker":"name.findName"}]}]
+[{"name":"Article","attributes":[{"name":"name","faker":"name.findName"}]},{"name":"User","attributes":[{"name":"name","faker":"name.findName"}]}]
