@@ -2,24 +2,26 @@ const fs = require('fs')
 const fsPromises = fs.promises
 
 module.exports = () => {
-  fs.watch(`${__dirname}/config.json`, (curr, prev) => {
-    fs.readFile(`${__dirname}/config.json`, (err, data) => {
-      const config = JSON.parse(data.toString())
+  fs.watch(`${__dirname}/config.json`, readNewConfig)
+}
 
-      Promise.all([
-        writeModelFiles(config),
-        writeControllerFiles(config),
-        writeRouteFiles(config),
-      ])
-        .then(() => {
-          writeRoutesIndexFile(config)
-        })
-        .catch((err) => {
-          console.error(`ERROR: error when creating routes`)
-          console.error(err)
-          process.exit(1)
-        })
-    })
+function readNewConfig() {
+  fs.readFile(`${__dirname}/config.json`, (err, data) => {
+    const config = JSON.parse(data.toString())
+
+    Promise.all([
+      writeModelFiles(config),
+      writeControllerFiles(config),
+      writeRouteFiles(config),
+    ])
+      .then(() => {
+        writeRoutesIndexFile(config)
+      })
+      .catch((err) => {
+        console.error(`ERROR: error when creating routes`)
+        console.error(err)
+        process.exit(1)
+      })
   })
 }
 
